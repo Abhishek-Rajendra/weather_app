@@ -11,6 +11,11 @@
   padding-top: 1.5rem;
 }
 
+.Main__currentWeather {
+  max-width: 400px;
+  display: inline-block;
+}
+
 .Main__no-location {
   padding: 1.5rem 0;
   text-align: center;

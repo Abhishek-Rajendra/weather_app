@@ -6,16 +6,33 @@ import Forecast from "../Forecast/Forecast";
 import "./main.css";
 
 export default function Main({ weatherInfo, location, date, contentState }) {
+  const dates = [];
+  for (let i = 0; i < 6; i++) {
+    dates[i] = (date[1] + i + 1) % 7;
+  }
+
   if (contentState === "weather")
     return (
       <div className="Main">
-        <Current weatherInfo={weatherInfo} location={location} date={date[0]} />
+        <div className="Main__currentWeather">
+          <Current
+            weatherInfo={weatherInfo}
+            location={location}
+            date={date[0][date[1]]}
+          />
+        </div>
+        <div className="Main__Trend">Next few days..</div>
         <div className="Main__forecast">
-          <Forecast weatherInfo={weatherInfo.daily[0]} date={date[0]} />
-          <Forecast weatherInfo={weatherInfo.daily[1]} date={date[1]} />
-          <Forecast weatherInfo={weatherInfo.daily[2]} date={date[2]} />
-          <Forecast weatherInfo={weatherInfo.daily[3]} date={date[3]} />
-          <Forecast weatherInfo={weatherInfo.daily[4]} date={date[4]} />
+          {dates.map((dayIndex, index) => {
+            console.log(index, dayIndex);
+            return (
+              <Forecast
+                key={index}
+                weatherInfo={weatherInfo.daily[index]}
+                date={date[0][dayIndex]}
+              />
+            );
+          })}
         </div>
       </div>
     );

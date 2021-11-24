@@ -12,4 +12,6 @@ body {
   font-family: Be Vietnam Pro, sans-serif;
   color: #f2f2f2;
   background-image: url("./background.jpg");
+  background-repeat:no-repeat;
+  background-size:cover;
 }
